@@ -18,8 +18,36 @@
 % If amp is not provided, then it should default to 1
 % if pts is omitted as well, then it should be set to 1000.
 
-function [s1, s2, sums] = sines(pts,amp,f1,f2)
-    
+function [s1, s2, sums] = sines(pts,amp,f1,f2)     
+    % check for pts as integer
+   % if (pts == fix(pts))   
+         % check for omitted values 
+        if (nargin < 1)
+            % pts is not provided
+            pts = 1000;
+            amp = 1;
+            f1 = 100;
+            f2 = f1 + 0.05*f1;
+        elseif (nargin < 2)
+            amp = 1;
+            f1 = 100;
+            f2 = f1 + 0.05*f1;
+        elseif (nargin < 3)
+            % f1 is ommited
+            f1 = 100;
+            f2 = f1 + 0.05*f1;
+        elseif (nargin < 4)
+            % f2 is omitted
+            f2 = f1 + 0.05*f1;
+        end
+        % do the calculations here 
+        s1 = amp * sin(f1*ones(1, pts));
+        s2 = amp * sin(f2*ones(1, pts));
+        sums = s1 + s2;
+   % else
+   %     error('pts value must be integer');
+  %  end
+        
 end
 
 
