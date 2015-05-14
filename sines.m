@@ -41,10 +41,8 @@ function [s1, s2, sums] = sines(pts,amp,f1,f2)
             f2 = f1 + 0.05*f1;
         end
         % do the calculations here 
-        s1 = repmat((amp * sin(0:f1)), 1, pts);
-        s2 = repmat((amp * sin(0:f2)), 1, pts);
-        s1 = s1(1:pts);
-        s2 = s2(1:pts);
+        s1 = amp * sin(2*pi*linspace(0,f1, pts));
+        s2 = amp * sin(2*pi*linspace(0,f2, pts));
         sums = s1 + s2;
    % else
    %     error('pts value must be integer');
